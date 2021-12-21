@@ -61,15 +61,20 @@ namespace DesignPattern.Pattern
     {
         public Adapter()
         {
-            ChromeDriver chromeDriver = new ChromeDriver(); 
-            chromeDriver.getElement();  
-            chromeDriver.selectElement();
+            ChromeDriver chromeDriver = new ChromeDriver();
 
-            IEDriver iEDriver = new IEDriver(); 
+            IEDriver iEDriver = new IEDriver();
+            WebDriverAdapter adapter = new WebDriverAdapter(iEDriver);          
 
-            WebDriverAdapter adapter = new WebDriverAdapter(iEDriver);
-            adapter.getElement();   
-            adapter.selectElement();
+            List<IWebDrive> webDrives = new List<IWebDrive>();
+            webDrives.Add(chromeDriver);
+            webDrives.Add(adapter);
+
+            foreach(IWebDrive webDrive in webDrives)
+            {
+                webDrive.getElement();
+                webDrive.selectElement();
+            }
         }
     }
 }
