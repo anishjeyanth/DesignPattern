@@ -8,6 +8,7 @@ public class Program
         //new Builder1();
         //new Prototype();
         //new Factory();
-        new AbstractFactory();
+        //new AbstractFactory();
+        new Adapter();
     }
 }
