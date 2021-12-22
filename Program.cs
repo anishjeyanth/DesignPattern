@@ -9,6 +9,7 @@ public class Program
         //new Prototype();
         //new Factory();
         //new AbstractFactory();
-        new Adapter();
+        //new Adapter();
+        new Bridge();
     }
 }
