@@ -10,6 +10,7 @@ public class Program
         //new Factory();
         //new AbstractFactory();
         //new Adapter();
-        new Bridge();
+        //new Bridge();
+        new Composite();
     }
 }
