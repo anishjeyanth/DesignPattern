@@ -12,6 +12,7 @@ public class Program
         //new Adapter();
         //new Bridge();
         //new Composite();
-        new Decorator();
+        //new Decorator();
+        new Facade();
     }
 }
