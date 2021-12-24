@@ -8,29 +8,31 @@ namespace DesignPattern.Pattern
 {
     public interface IEmployee
     {
-        public void Balance();
+        public void Info();
     }
 
     public class Employee : IEmployee
     {
-        private int amount { get; set; }
-        public Employee(int amount)
+        private string name { get; set; }
+        public Employee(string name)
         {
-            this.amount = amount;
+            this.name = name;
         }
 
-        public void Balance()
+        public void Info()
         {
-            Console.WriteLine(amount);
+            Console.WriteLine(name);
         }
     }
 
     public class CompositeEmployee : IEmployee
     {
         private List<IEmployee> accounts;
+        private string department { get; set; }
 
-        public CompositeEmployee()
+        public CompositeEmployee(string department)
         {
+            this.department = department;   
             accounts = new List<IEmployee>();
         }
         public void Add(IEmployee amount)
@@ -38,11 +40,12 @@ namespace DesignPattern.Pattern
             accounts.Add(amount);
         }
 
-        public void Balance()
+        public void Info()
         {
+            Console.WriteLine(department);
             foreach(IEmployee account in accounts)
             {
-               account.Balance();
+               account.Info();
             }
         }
     }
@@ -51,17 +54,17 @@ namespace DesignPattern.Pattern
     {
         public Composite()
         {
-            CompositeEmployee compositeEmployee = new CompositeEmployee();
-            compositeEmployee.Add(new Employee(100));
-            compositeEmployee.Add(new Employee(300));
-            compositeEmployee.Add(new Employee(700));
-            compositeEmployee.Balance();
+            CompositeEmployee compositeEmployee = new CompositeEmployee("Math");
+            compositeEmployee.Add(new Employee("a"));
+            compositeEmployee.Add(new Employee("b"));
+            compositeEmployee.Add(new Employee("c"));
+            compositeEmployee.Info();
 
-            CompositeEmployee compositeEmployee1 = new CompositeEmployee();
-            compositeEmployee1.Add(new Employee(110));
-            compositeEmployee1.Add(new Employee(310));
-            compositeEmployee1.Add(new Employee(710));
-            compositeEmployee1.Balance();
+            CompositeEmployee compositeEmployee1 = new CompositeEmployee("Science");
+            compositeEmployee1.Add(new Employee("ty"));
+            compositeEmployee1.Add(new Employee("hj"));
+            compositeEmployee1.Add(new Employee("nm"));
+            compositeEmployee1.Info();
 
         }
     }

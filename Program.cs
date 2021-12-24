@@ -11,6 +11,7 @@ public class Program
         //new AbstractFactory();
         //new Adapter();
         //new Bridge();
-        new Composite();
+        //new Composite();
+        new Decorator();
     }
 }
