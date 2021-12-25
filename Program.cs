@@ -14,6 +14,7 @@ public class Program
         //new Composite();
         //new Decorator();
         //new Facade();
-        new Flyweight();
+        //new Flyweight();
+        new Proxy();
     }
 }
