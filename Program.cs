@@ -13,6 +13,7 @@ public class Program
         //new Bridge();
         //new Composite();
         //new Decorator();
-        new Facade();
+        //new Facade();
+        new Flyweight();
     }
 }
