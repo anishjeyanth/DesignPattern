@@ -16,6 +16,7 @@ public class Program
         //new Facade();
         //new Flyweight();
         //new Proxy();
-        new ChainOfResponsibility();
+        //new ChainOfResponsibility();
+        new Command();
     }
 }

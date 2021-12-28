@@ -73,7 +73,7 @@ namespace DesignPattern.Pattern
             l3handler.NextHandler = l2handler;
             l2handler.NextHandler = l1handler;
             l1handler.NextHandler = null;
-            l3handler.Process(" C://Temp", 1);
+            l3handler.Process(" C://Temp", 3);
         }
     }
 }
