@@ -17,6 +17,8 @@ public class Program
         //new Flyweight();
         //new Proxy();
         //new ChainOfResponsibility();
-        new Command();
+        //new Command();
+        //new Interpreter();
+        new Iterator();
     }
 }
