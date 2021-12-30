@@ -19,6 +19,8 @@ public class Program
         //new ChainOfResponsibility();
         //new Command();
         //new Interpreter();
-        new Iterator();
+        //new Iterator();
+        //new Mediator();
+        new Mementos();
     }
 }
