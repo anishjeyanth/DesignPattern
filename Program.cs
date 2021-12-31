@@ -22,6 +22,8 @@ public class Program
         //new Iterator();
         //new Mediator();
         //new Mementos();
-        new Observer();
+        //new Observer();
+        //new States();
+        new Strategy();
     }
 }
