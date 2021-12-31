@@ -21,6 +21,7 @@ public class Program
         //new Interpreter();
         //new Iterator();
         //new Mediator();
-        new Mementos();
+        //new Mementos();
+        new Observer();
     }
 }
