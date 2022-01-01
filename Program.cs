@@ -24,6 +24,8 @@ public class Program
         //new Mementos();
         //new Observer();
         //new States();
-        new Strategy();
+        //new Strategy();
+        //new Template();
+        new Visitor();
     }
 }
