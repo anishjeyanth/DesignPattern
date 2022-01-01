@@ -26,6 +26,7 @@ public class Program
         //new States();
         //new Strategy();
         //new Template();
-        new Visitor();
+        //new Visitor();
+        new NullObject();
     }
 }
