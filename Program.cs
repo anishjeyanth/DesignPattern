@@ -27,6 +27,6 @@ public class Program
         //new Strategy();
         //new Template();
         //new Visitor();
-        new NullObject();
+        //new NullObject();
     }
 }

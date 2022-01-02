@@ -17,9 +17,11 @@ namespace DesignPattern.Pattern
             Warmup();
             PlayGame();
             Drinks();
+            //we can add condition, and based on that methods will be executed
+            //if(IsEven()) { PrintNo(); }
         }
 
-        public void Event()
+        public virtual void Event()
         {
             Console.WriteLine("Event");
         }
@@ -40,6 +42,11 @@ namespace DesignPattern.Pattern
         public override void Warmup()
         {
             Console.WriteLine("Tennis Warmup");
+        }
+
+        public override void Event()
+        {
+            Console.WriteLine("US Open");
         }
     }
 
@@ -67,9 +74,9 @@ namespace DesignPattern.Pattern
         {
             Game game = new Tennis();
             game.Play();
+            game.Event();
             game = new Football();
             game.Play();
-
             game.Event();
         }
     }
