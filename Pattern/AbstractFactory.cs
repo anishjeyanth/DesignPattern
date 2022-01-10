@@ -6,121 +6,145 @@ using System.Threading.Tasks;
 
 namespace DesignPattern.Pattern
 {
-    public abstract class Shapes
+    public interface IInstance
     {
-        public Shapes()
-        {
-            this.Draw();
-        }
-        public abstract void Draw();
+        void Start();
+        void Stop();
+        void AttachStorage(IStorage storage);
     }
 
-    public class Circles : Shapes
+    public interface IStorage
     {
-        public override void Draw()
-        {
-            Console.WriteLine("Circle");
-        }
+        string StorageType { get; }
     }
 
-    public class Squares : Shapes
+    public class AWSInstance : IInstance
     {
-        public override void Draw()
+        public AWSInstance(int capasity)
         {
-            Console.WriteLine("Square");
         }
-    }
-
-    public abstract class Color
-    {
-        public Color()
+        public void AttachStorage(IStorage storage)
         {
-            this.Paint();
+            Console.WriteLine("AWS storage - " + storage.StorageType);
         }
-        public abstract void Paint();
-    }
 
-    public class Red : Color
-    {
-        public override void Paint()
+        public void Start()
         {
-            Console.WriteLine("Red");
+            Console.WriteLine("AWS start");
+        }
+
+        public void Stop()
+        {
+            Console.WriteLine("AWS stop");
         }
     }
 
-    public class Green : Color
+    public class GCPInstance : IInstance
     {
-        public override void Paint()
+        public GCPInstance(int capasity)
         {
-            Console.WriteLine("Green");
+        }
+
+        public void AttachStorage(IStorage storage)
+        {
+            Console.WriteLine("GCP storage - " + storage.StorageType);
+        }
+
+        public void Start()
+        {
+            Console.WriteLine("GCP start");
+        }
+
+        public void Stop()
+        {
+            Console.WriteLine("GCP stop");
         }
     }
 
-    public abstract class AbstractFactorys
+    public class S3Storage : IStorage
     {
-        public abstract Color getColor(string item);
-        public abstract Shapes getShape(string item);
-    }
+        public string StorageType { get; }
 
-    public class ShapeFactorys : AbstractFactorys
-    {
-        public override Color getColor(string item)
+        public S3Storage(string type)
         {
-            throw new NotImplementedException();
-        }
-
-        public override Shapes getShape(string item)
-        {
-            if (item == "circle")
-                return new Circles();
-            else if (item == "square")
-                return new Squares();
-
-            return null;
+            StorageType = type;
         }
     }
 
-    public class ColorFactory : AbstractFactorys
+    public class GoogleStorage : IStorage
     {
-        public override Color getColor(string item)
-        {
-            if (item == "red")
-                return new Red();
-            else if (item == "green")
-                return new Green();
+        public string StorageType { get; }
 
-            return null;
-        }
-
-        public override Shapes getShape(string item)
+        public GoogleStorage(string type)
         {
-            throw new NotImplementedException();
+            StorageType = type;
         }
     }
 
-    public static class FactoryProducer
+    public interface IResourceFactory
     {
-        public static AbstractFactorys getFactory(string item)
-        {
-            if(item == "shape")
-                return new ShapeFactorys();
-            else if(item == "color")
-                return new ColorFactory();
+        IInstance CreateInstance(int capacity);
+        IStorage CreateStorage(string type);
+    }
 
-            return null;
+    public class AWSResourceFactory : IResourceFactory
+    {
+        public IInstance CreateInstance(int capacity)
+        {
+            return new AWSInstance(capacity);
+        }
+
+        public IStorage CreateStorage(string type)
+        {
+            return new S3Storage(type);
         }
     }
+
+    public class GCPResourceFactory : IResourceFactory
+    {
+        public IInstance CreateInstance(int capacity)
+        {
+            return new GCPInstance(capacity);
+        }
+
+        public IStorage CreateStorage(string type)
+        {
+            return new GoogleStorage(type);
+        }
+    }
+
+    public class Client
+    {
+        private IResourceFactory _resourceFactory;  
+        public Client(IResourceFactory resourceFactory)
+        {
+            _resourceFactory = resourceFactory;
+        }
+
+        public IInstance CreateCloud(int capacity, string type)
+        {
+            IInstance instance = _resourceFactory.CreateInstance(capacity);
+            IStorage storage = _resourceFactory.CreateStorage(type);
+            instance.AttachStorage(storage);
+            return instance;
+        }
+    }
+
 
 
     internal class AbstractFactory
     {
         public AbstractFactory()
         {
-            AbstractFactorys abstractFactorys1 = FactoryProducer.getFactory("color");
-            abstractFactorys1.getColor("red");
+            Client aws = new Client(new AWSResourceFactory());
+            IInstance awsinstance = aws.CreateCloud(1024, "HDD");
+            awsinstance.Start();
+            awsinstance.Stop();
 
-            AbstractFactorys abstractFactorys2 = FactoryProducer.getFactory("shape");
-            abstractFactorys2.getShape("square");
+            Client gcp = new Client(new AWSResourceFactory());
+            IInstance gcpinstance = aws.CreateCloud(2048, "SSD");
+            gcpinstance.Start();
+            gcpinstance.Stop();
         }
     }
 }

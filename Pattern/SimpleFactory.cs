@@ -33,12 +33,12 @@ namespace DesignPattern.Pattern
 
     public static class ShapeFactory
     {
-        public static Shapes getShape(string item)
+        public static Shape getShape(string item)
         {
             if(item == "circle")
-                return new Circles();
+                return new Circle();
             else if(item == "square")
-                return new Squares();
+                return new Square();
 
             return null;
         }
@@ -49,8 +49,8 @@ namespace DesignPattern.Pattern
     {
         public SimpleFactory()
         {
-            Shapes cir = ShapeFactory.getShape("circle");
-            Shapes sqa = ShapeFactory.getShape("square");
+            Shape cir = ShapeFactory.getShape("circle");
+            Shape sqa = ShapeFactory.getShape("square");
         }
     }
 }

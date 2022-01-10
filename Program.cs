@@ -8,8 +8,8 @@ public class Program
         //new Builder1();
         //new Prototype();
         //new SimpleFactory();
-        new FactoryMethod();
-        //new AbstractFactory();
+        //new FactoryMethod();
+        new AbstractFactory();
         //new Adapter();
         //new Bridge();
         //new Composite();
