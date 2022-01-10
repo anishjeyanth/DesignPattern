@@ -7,7 +7,8 @@ public class Program
         //Console.WriteLine(Singleton.Instance == Singleton.Instance);
         //new Builder1();
         //new Prototype();
-        //new Factory();
+        //new SimpleFactory();
+        new FactoryMethod();
         //new AbstractFactory();
         //new Adapter();
         //new Bridge();

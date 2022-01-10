@@ -45,9 +45,9 @@ namespace DesignPattern.Pattern
     }
 
 
-    internal class Factory
+    internal class SimpleFactory
     {
-        public Factory()
+        public SimpleFactory()
         {
             Shapes cir = ShapeFactory.getShape("circle");
             Shapes sqa = ShapeFactory.getShape("square");
