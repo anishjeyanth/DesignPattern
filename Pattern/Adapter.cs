@@ -40,6 +40,7 @@ namespace DesignPattern.Pattern
 
     public class WebDriverAdapter : IWebDrive
     {
+        //Object Adapter
         private IEDriver iEDriver;
         public WebDriverAdapter(IEDriver iEDriver)
         {

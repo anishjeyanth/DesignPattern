@@ -9,7 +9,7 @@ public class Program
         //new Prototype();
         //new SimpleFactory();
         //new FactoryMethod();
-        new AbstractFactory();
+        //new AbstractFactory();
         //new Adapter();
         //new Bridge();
         //new Composite();
@@ -29,5 +29,6 @@ public class Program
         //new Template();
         //new Visitor();
         //new NullObject();
+        new ObjectPool();
     }
 }
