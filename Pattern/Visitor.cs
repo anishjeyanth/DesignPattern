@@ -14,9 +14,9 @@ namespace DesignPattern.Pattern
 
     public interface IOfferVisitor
     {
-        void VisitorBronzeCreditCard(BronzeCreditCard bronze);
-        void VisitorSilverCreditCard(SilverCreditCard silver);
-        void VisitorGoldCreditCard(GoldCreditCard gold);
+        void Visit(BronzeCreditCard bronze);
+        void Visit(SilverCreditCard silver);
+        void Visit(GoldCreditCard gold);
     }
 
     public class BronzeCreditCard : ICrediCard
@@ -29,7 +29,7 @@ namespace DesignPattern.Pattern
 
         public void Accept(IOfferVisitor visitor)
         {
-            visitor.VisitorBronzeCreditCard(this);
+            visitor.Visit(this);
         }
 
         public int GetPrice()
@@ -53,7 +53,7 @@ namespace DesignPattern.Pattern
 
         public void Accept(IOfferVisitor visitor)
         {
-            visitor.VisitorSilverCreditCard(this);
+            visitor.Visit(this);
         }
 
         public int GetPrice()
@@ -77,7 +77,7 @@ namespace DesignPattern.Pattern
 
         public void Accept(IOfferVisitor visitor)
         {
-            visitor.VisitorGoldCreditCard(this);
+            visitor.Visit(this);
         }
 
         public int GetPrice()
@@ -93,17 +93,17 @@ namespace DesignPattern.Pattern
 
     public class HotelOfferVisitor : IOfferVisitor
     {
-        public void VisitorBronzeCreditCard(BronzeCreditCard bronze)
+        public void Visit(BronzeCreditCard bronze)
         {
             Console.WriteLine("HotelOffer Bronze - "+ Convert.ToInt32(bronze.GetPrice() + 100));
         }
 
-        public void VisitorGoldCreditCard(GoldCreditCard gold)
+        public void Visit(GoldCreditCard gold)
         {
             Console.WriteLine("HotelOffer Gold - "+ Convert.ToInt32(gold.GetPrice() + 101));
         }
 
-        public void VisitorSilverCreditCard(SilverCreditCard silver)
+        public void Visit(SilverCreditCard silver)
         {
             Console.WriteLine("HotelOffer Silver - "+ Convert.ToInt32(silver.GetPrice() + 102));
         }
@@ -111,17 +111,17 @@ namespace DesignPattern.Pattern
 
     public class StayOfferVisitor : IOfferVisitor
     {
-        public void VisitorBronzeCreditCard(BronzeCreditCard bronze)
+        public void Visit(BronzeCreditCard bronze)
         {
             Console.WriteLine("StayOffer Bronze - " + Convert.ToInt32(bronze.GetPrice() + 200));
         }
 
-        public void VisitorGoldCreditCard(GoldCreditCard gold)
+        public void Visit(GoldCreditCard gold)
         {
             Console.WriteLine("StayOffer Gold - " + Convert.ToInt32(gold.GetPrice() + 201));
         }
 
-        public void VisitorSilverCreditCard(SilverCreditCard silver)
+        public void Visit(SilverCreditCard silver)
         {
             Console.WriteLine("StayOffer Silver - " + Convert.ToInt32(silver.GetPrice() + 202));
         }
