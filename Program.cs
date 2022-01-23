@@ -5,7 +5,7 @@ public class Program
     public static void Main(string[] args)
     {
         //Console.WriteLine(Singleton.Instance == Singleton.Instance);
-        //new Builder1();
+        new Builder1();
         //new Prototype();
         //new SimpleFactory();
         //new FactoryMethod();
@@ -29,6 +29,6 @@ public class Program
         //new Template();
         //new Visitor();
         //new NullObject();
-        new ObjectPool();
+        //new ObjectPool();
     }
 }
