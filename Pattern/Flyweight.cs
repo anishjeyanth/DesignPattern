@@ -45,31 +45,30 @@ namespace DesignPattern.Pattern
 
         public static IStaff GetStaff(string type)
         {
-            IStaff staf = null;
-            var sta = staff.FirstOrDefault(x => x.Key == type);
-            staf = sta.Value;
-            if (staf == null)
+            KeyValuePair<string,IStaff> staffResult = StaffFactory.staff.FirstOrDefault(x => x.Key == type);
+            IStaff staff = staffResult.Value;
+            if (staff is null)
             {
                 switch (type)
                 {
                     case "developer":
                         Developer developer = new Developer();
                         developer.AssignTask("to develop");
-                        staff.Add("developer", developer);
+                        StaffFactory.staff.Add("developer", developer);
                         Console.WriteLine("developer created");
-                        staf = developer;
+                        staff = developer;
                         break;
                     case "tester":
                         Tester tester = new Tester();
                         tester.AssignTask("to test");
-                        staff.Add("tester", tester);
+                        StaffFactory.staff.Add("tester", tester);
                         Console.WriteLine("tester created");
-                        staf = tester;
+                        staff = tester;
                         break;
                 }
             }
 
-            return staf;
+            return staff;
         }
     }
 

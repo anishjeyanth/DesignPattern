@@ -32,7 +32,7 @@ namespace DesignPattern.Pattern
     }
 
 
-    public abstract class MessageCreator
+    public abstract class MessageFactory
     {
         public Message GetMessage()
         {
@@ -45,7 +45,7 @@ namespace DesignPattern.Pattern
         public abstract Message CreateMessage();
     }
 
-    public class JSONMessageCreator : MessageCreator
+    public class JSONMessageCreator : MessageFactory
     {
         public override Message CreateMessage()
         {
@@ -53,7 +53,7 @@ namespace DesignPattern.Pattern
         }
     }
 
-    public class TextMessageCreator : MessageCreator
+    public class TextMessageCreator : MessageFactory
     {
         public override Message CreateMessage()
         {
@@ -62,14 +62,15 @@ namespace DesignPattern.Pattern
     }
 
     internal class FactoryMethod
-    {
+    {      
         public FactoryMethod()
         {
+            //We can use swtich case also 
             Print(new JSONMessageCreator());
             Print(new TextMessageCreator());
         }
 
-        public void Print(MessageCreator messageCreator)
+        public void Print(MessageFactory messageCreator)
         {
             Message msg = messageCreator.GetMessage();
             Console.WriteLine(msg.GetContent());
