@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern.Pattern
+﻿namespace DesignPattern.Pattern
 {
     class ObjectPool<T> where T : new()
     {
